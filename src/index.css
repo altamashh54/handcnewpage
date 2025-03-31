@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: 'Mulish', sans-serif;
+    scroll-behavior: smooth;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+  }
+}
+
+.hero-curve {
+  position: relative;
+}
+
+.hero-curve::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  background: white;
+  clip-path: ellipse(50% 60% at 50% 100%);
+}
+
+.bg-soft-pink {
+  background-color: #ffdfd9;
+}
+
+@media (max-width: 640px) {
+  .hero-curve::after {
+    height: 40px;
+  }
+}
