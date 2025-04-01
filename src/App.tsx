@@ -131,7 +131,8 @@ function App() {
                       transition={{ duration: 0.8, delay: 0.2 }}
                       className="font-mulish text-base md:text-lg text-gray-700 md:text-white mb-6 leading-relaxed"
                     >
-                      We've helped 200+ Brides plan every detail from start to finish-within their budget. No matter where they started.
+                      We've helped 200+ Brides plan every detail from start to
+                      finish-within their budget. No matter where they started.
                     </motion.p>
                     <motion.div
                       initial={{ y: 20, opacity: 0 }}
@@ -178,21 +179,20 @@ function App() {
                   <div className="font-mulish text-sm md:text-base text-gray-600 max-w-4xl mx-auto space-y-6">
                     <p>
                       You've spent months imagining your perfect wedding,
-                      scrolling through Pinterest, and saving ideas. But turning
-                      t vision into reality? urning t{" "}
+                      scrolling through Pinterest,planning tiny details and
+                      saving ideas. But turning that vision into reality?
                       <span className="font-bold text-sm md:text-base text-black-900">
                         {" "}
                         That's where we come in.{" "}
                       </span>
                     </p>
                     <p>
-                      We handle the logistics, the details, and the stress—so
+                      We'll handle the logistics, the details, and the stress—so
                       you don't have to. From coordinating vendors to setting up
-                      athtaking decor, we ensup ure every moment is seamless.
-                      instead of stressing oseamless. ver timelines and to-do
-                      lists e planning, you can to-doflistsocus on the
-                      excitement of your ect day—picturing texcitementhofeyour
-                      moment, not managing the ils. managing the{" "}
+                      the perfect decor that you envision, we'll ensure
+                      everything is exactly as you imagined. Instead of
+                      stressing over timelines and to-do lists, you can now be
+                      excited again like you were when you got proposed.{" "}
                     </p>
 
                     <p>
@@ -203,7 +203,7 @@ function App() {
                         With 200+ UK couples
                       </span>{" "}
                       trusting us to bring their dream weddings to life, you're
-                      t he best hands. you're{" "}
+                      in the best hands.
                     </p>
                     <p>
                       <span className="font-bold text-sm md:text-base text-black-900">
