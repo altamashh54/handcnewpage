@@ -1,29 +1,39 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { Heart, BellRing, Sparkles, Calendar, Star, Quote, Send, Instagram, Facebook } from 'lucide-react';
-import { motion } from 'framer-motion';
+import React, { useState, useRef, useEffect } from "react";
+import {
+  Heart,
+  BellRing,
+  Sparkles,
+  Calendar,
+  Star,
+  Quote,
+  Send,
+  Instagram,
+  Facebook,
+} from "lucide-react";
+import { motion } from "framer-motion";
 
 function App() {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    message: '',
-    weddingDate: ''
+    name: "",
+    email: "",
+    phone: "",
+    message: "",
+    weddingDate: "",
   });
 
   const contactFormRef = useRef<HTMLDivElement>(null);
   const [currentImage, setCurrentImage] = useState(0);
-  
+
   const images = [
-    'https://i.imgur.com/J5jhJBB.png',
-    'https://i.imgur.com/aSlnsyW.jpeg',
-    'https://i.imgur.com/SHKZVmP.jpeg',
-    'https://i.imgur.com/gHAxQjp.jpeg',
-    'https://i.imgur.com/RomYfqr.jpeg',
-    'https://i.imgur.com/hn4g6gm.jpeg',
-    'https://i.imgur.com/ac2ptz2.jpeg',
-    'https://i.imgur.com/wo7M7YH.jpeg',
-    'https://i.imgur.com/bRVddA8.png'
+    "https://i.imgur.com/J5jhJBB.png",
+    "https://i.imgur.com/aSlnsyW.jpeg",
+    "https://i.imgur.com/SHKZVmP.jpeg",
+    "https://i.imgur.com/gHAxQjp.jpeg",
+    "https://i.imgur.com/RomYfqr.jpeg",
+    "https://i.imgur.com/hn4g6gm.jpeg",
+    "https://i.imgur.com/ac2ptz2.jpeg",
+    "https://i.imgur.com/wo7M7YH.jpeg",
+    "https://i.imgur.com/bRVddA8.png",
   ];
 
   useEffect(() => {
@@ -33,42 +43,42 @@ function App() {
     return () => clearInterval(interval);
   }, []);
 
-  const today = new Date().toISOString().split('T')[0];
+  const today = new Date().toISOString().split("T")[0];
   const maxDate = new Date();
   maxDate.setFullYear(maxDate.getFullYear() + 5);
-  const maxDateString = maxDate.toISOString().split('T')[0];
+  const maxDateString = maxDate.toISOString().split("T")[0];
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
-    const response = await fetch('/.netlify/functions/send-email', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(formData)
+
+    const response = await fetch("/.netlify/functions/send-email", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formData),
     });
 
     if (response.ok) {
-      alert('Form submitted! We will contact you soon.');
+      alert("Form submitted! We will contact you soon.");
     } else {
-      alert('Error submitting form. Please try again.');
+      alert("Error submitting form. Please try again.");
     }
   };
 
   const scrollToContact = () => {
-    contactFormRef.current?.scrollIntoView({ behavior: 'smooth' });
+    contactFormRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
         className="relative hero-curve"
       >
         <div className="absolute inset-0 bg-soft-pink/20"></div>
-        <div 
+        <div
           className="h-[85vh] bg-cover bg-center bg-no-repeat relative"
           style={{
             backgroundImage: 'url("https://i.imgur.com/r6CDKjp.png")',
@@ -77,7 +87,7 @@ function App() {
           <div className="absolute inset-0 bg-black/30"></div>
           <div className="relative container mx-auto px-4 h-full flex items-center justify-end">
             <div className="max-w-xl bg-white/95 p-8 rounded-lg shadow-lg md:bg-transparent md:p-0 md:shadow-none">
-              <motion.h1 
+              <motion.h1
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.8 }}
@@ -85,29 +95,36 @@ function App() {
               >
                 Your Dream Wedding, Planned Stress-Free
               </motion.h1>
-              <motion.p 
+              <motion.p
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
                 className="font-mulish text-base md:text-lg text-gray-700 md:text-white mb-6 leading-relaxed"
               >
-                From coordinating vendors to setting up decor, 
-                we handle every detail.
+                From coordinating vendors to setting up decor, we handle every
+                detail.
               </motion.p>
-              <motion.div 
+              <motion.div
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
                 className="flex flex-col items-start space-y-3"
               >
-                <button 
+                <button
                   onClick={scrollToContact}
                   className="bg-white text-gray-900 px-6 py-3 rounded-full font-mulish font-semibold hover:bg-gray-100 transition duration-300 w-full sm:w-auto hover:scale-105 transform text-sm md:text-base"
                 >
                   Book Your Free Consultation Now!
                 </button>
                 <div className="bg-[#FDF3F3] text-[#333333] px-4 py-3 rounded-lg text-xs md:text-sm font-mulish">
-                  <p> <span className="font-bold text-sm md:text-base text-black-900">🎁 Limited Time Bonus</span>: Get a Free Gloucestershire Vendor Guide with your consultation—vetted vendors to avoid hidden costs! </p>
+                  <p>
+                    {" "}
+                    <span className="font-bold text-sm md:text-base text-black-900">
+                      🎁 Limited Time Bonus
+                    </span>
+                    : Get a Free Gloucestershire Vendor Guide with your
+                    consultation—vetted vendors to avoid hidden costs!{" "}
+                  </p>
                 </div>
               </motion.div>
             </div>
@@ -116,7 +133,7 @@ function App() {
       </motion.div>
 
       {/* Services Section */}
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
@@ -125,28 +142,44 @@ function App() {
       >
         <div className="container mx-auto px-4">
           <div className="text-center mb-10 md:mb-12">
-            <h2 className="font-playfair text-2xl md:text-3xl mb-4">You can stop being overwhelmed.... </h2>
+            <h2 className="font-playfair text-2xl md:text-3xl mb-4">
+              You can stop being overwhelmed....{" "}
+            </h2>
             <div className="font-mulish text-sm md:text-base text-gray-600 max-w-4xl mx-auto space-y-6">
               <p>
-                Imagine walking down the aisle, knowing everything is handled perfectly. No last-minute chaos, 
-                no stress—just pure joy, love, and celebration. <span className="font-bold text-sm md:text-base text-black-900">With 200+ UK couples</span> trusting us to bring their 
-                dream weddings to life, you're in the best hands.
+                Imagine walking down the aisle, knowing everything is handled
+                perfectly. No last-minute chaos, no stress—just pure joy, love,
+                and celebration.{" "}
+                <span className="font-bold text-sm md:text-base text-black-900">
+                  With 200+ UK couples
+                </span>{" "}
+                trusting us to bring their dream weddings to life, you're in the
+                best hands.
               </p>
               <p>
-                You've spent months imagining your perfect wedding, scrolling through Pinterest, and saving ideas. 
-                But turning that vision into reality?<span className="font-bold text-sm md:text-base text-black-900"> That's where we come in. </span>
+                You've spent months imagining your perfect wedding, scrolling
+                through Pinterest, and saving ideas. But turning that vision
+                into reality?
+                <span className="font-bold text-sm md:text-base text-black-900">
+                  {" "}
+                  That's where we come in.{" "}
+                </span>
               </p>
               <p>
-                We handle the logistics, the details, and the stress—so you don't have to. From coordinating vendors 
-                to setting up breathtaking decor, we ensure every moment is seamless. So, when you walk down the aisle, 
-                you're not thinking about timelines or to-do lists. You're soaking in the magic of the day, completely 
+                We handle the logistics, the details, and the stress—so you
+                don't have to. From coordinating vendors to setting up
+                breathtaking decor, we ensure every moment is seamless. So, when
+                you walk down the aisle, you're not thinking about timelines or
+                to-do lists. You're soaking in the magic of the day, completely
                 present, surrounded by love.
               </p>
               <p>
-                <span className="font-bold text-sm md:text-base text-black-900">Let's make it happen, together. </span>
+                <span className="font-bold text-sm md:text-base text-black-900">
+                  Let's make it happen, together.{" "}
+                </span>
               </p>
               <div className="pt-6">
-                <button 
+                <button
                   onClick={scrollToContact}
                   className="bg-gray-900 text-white px-6 py-3 rounded-full font-mulish font-semibold hover:bg-gray-800 transition duration-300 hover:scale-105 transform text-sm md:text-base"
                 >
@@ -182,7 +215,7 @@ function App() {
       </motion.div>
 
       {/* Testimonials Section */}
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
@@ -218,9 +251,9 @@ function App() {
             key={index}
             className="absolute inset-0"
             initial={{ opacity: 0 }}
-            animate={{ 
+            animate={{
               opacity: currentImage === index ? 1 : 0,
-              scale: currentImage === index ? 1 : 1.1
+              scale: currentImage === index ? 1 : 1.1,
             }}
             transition={{ duration: 1.5, ease: "easeInOut" }}
           >
@@ -234,7 +267,7 @@ function App() {
       </div>
 
       {/* Contact Form */}
-      <motion.div 
+      <motion.div
         ref={contactFormRef}
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -244,9 +277,11 @@ function App() {
       >
         <div className="container mx-auto px-4">
           <div className="max-w-2xl mx-auto">
-            <h2 className="font-playfair text-2xl md:text-3xl text-center mb-6">Contact Us</h2>
+            <h2 className="font-playfair text-2xl md:text-3xl text-center mb-6">
+              Contact Us
+            </h2>
             <div className="text-center mb-8">
-              <button 
+              <button
                 onClick={scrollToContact}
                 className="bg-gray-900 text-white px-6 py-3 rounded-full font-mulish font-semibold hover:bg-gray-800 transition duration-300 hover:scale-105 transform text-sm md:text-base"
               >
@@ -258,40 +293,66 @@ function App() {
             </p>
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
-                <label htmlFor="name" className="block font-mulish mb-2 text-sm">Name</label>
+                <label
+                  htmlFor="name"
+                  className="block font-mulish mb-2 text-sm"
+                >
+                  Name
+                </label>
                 <input
                   type="text"
                   id="name"
                   className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-soft-pink transition-all duration-300"
                   value={formData.name}
-                  onChange={(e) => setFormData({...formData, name: e.target.value})}
+                  onChange={(e) =>
+                    setFormData({ ...formData, name: e.target.value })
+                  }
                   required
                 />
               </div>
               <div>
-                <label htmlFor="email" className="block font-mulish mb-2 text-sm">Email</label>
+                <label
+                  htmlFor="email"
+                  className="block font-mulish mb-2 text-sm"
+                >
+                  Email
+                </label>
                 <input
                   type="email"
                   id="email"
                   className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-soft-pink transition-all duration-300"
                   value={formData.email}
-                  onChange={(e) => setFormData({...formData, email: e.target.value})}
+                  onChange={(e) =>
+                    setFormData({ ...formData, email: e.target.value })
+                  }
                   required
                 />
               </div>
               <div>
-                <label htmlFor="phone" className="block font-mulish mb-2 text-sm">Phone Number</label>
+                <label
+                  htmlFor="phone"
+                  className="block font-mulish mb-2 text-sm"
+                >
+                  Phone Number
+                </label>
                 <input
                   type="tel"
                   id="phone"
                   className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-soft-pink transition-all duration-300"
                   value={formData.phone}
-                  onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                  onChange={(e) =>
+                    setFormData({ ...formData, phone: e.target.value })
+                  }
                   required
                 />
               </div>
               <div>
-                <label htmlFor="weddingDate" className="block font-mulish mb-2 text-sm">Wedding Date (Optional)</label>
+                <label
+                  htmlFor="weddingDate"
+                  className="block font-mulish mb-2 text-sm"
+                >
+                  Wedding Date (Optional)
+                </label>
                 <input
                   type="date"
                   id="weddingDate"
@@ -299,17 +360,26 @@ function App() {
                   max={maxDateString}
                   className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-soft-pink transition-all duration-300"
                   value={formData.weddingDate}
-                  onChange={(e) => setFormData({...formData, weddingDate: e.target.value})}
+                  onChange={(e) =>
+                    setFormData({ ...formData, weddingDate: e.target.value })
+                  }
                 />
               </div>
               <div>
-                <label htmlFor="message" className="block font-mulish mb-2 text-sm">Message (Optional)</label>
+                <label
+                  htmlFor="message"
+                  className="block font-mulish mb-2 text-sm"
+                >
+                  Message (Optional)
+                </label>
                 <textarea
                   id="message"
                   rows={4}
                   className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-soft-pink transition-all duration-300"
                   value={formData.message}
-                  onChange={(e) => setFormData({...formData, message: e.target.value})}
+                  onChange={(e) =>
+                    setFormData({ ...formData, message: e.target.value })
+                  }
                 ></textarea>
               </div>
               <motion.button
@@ -331,24 +401,46 @@ function App() {
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center">
             <div className="flex flex-col space-y-4 mb-6 md:mb-0">
-              <img src="https://i.imgur.com/J5jhJBB.png" alt="Haybales & Chandeliers Logo" className="h-16 object-contain" />
-            
+              <img
+                src="https://i.imgur.com/J5jhJBB.png"
+                alt="Haybales & Chandeliers Logo"
+                className="h-16 object-contain"
+              />
+
               <div className="flex items-start space-x-4">
-                <a href="https://www.instagram.com/haybalesandchandeliers/" target="_blank" rel="noopener noreferrer" className="hover:text-soft-pink transition-colors">
+                <a
+                  href="https://www.instagram.com/haybalesandchandeliers/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-soft-pink transition-colors"
+                >
                   <Instagram className="w-5 h-5" />
                 </a>
-                <a href="https://www.facebook.com/HaybalesAndChandeliers/" target="_blank" rel="noopener noreferrer" className="hover:text-soft-pink transition-colors">
+                <a
+                  href="https://www.facebook.com/HaybalesAndChandeliers/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-soft-pink transition-colors"
+                >
                   <Facebook className="w-5 h-5" />
                 </a>
-                
-                <a href="tel:+447368203447" className="hover:text-soft-pink transition-colors text-sm">
+
+                <a
+                  href="tel:+447368203447"
+                  className="hover:text-soft-pink transition-colors text-sm"
+                >
                   +44 7368 203447
                 </a>
               </div>
             </div>
             <div className="flex flex-col items-start space-y-2 text-sm">
               <p>© 2025 Haybales & Chandeliers. All rights reserved.</p>
-              <a href="https://www.freeprivacypolicy.com/live/aba10e91-e336-4056-af89-7c2f9d21690a" target="_blank" rel="noopener noreferrer" className="hover:text-soft-pink transition-colors">
+              <a
+                href="https://www.freeprivacypolicy.com/live/aba10e91-e336-4056-af89-7c2f9d21690a"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-soft-pink transition-colors"
+              >
                 Privacy Policy
               </a>
             </div>
@@ -359,9 +451,17 @@ function App() {
   );
 }
 
-function ServiceCard({ icon, title, description }: { icon: React.ReactNode; title: string; description: string }) {
+function ServiceCard({
+  icon,
+  title,
+  description,
+}: {
+  icon: React.ReactNode;
+  title: string;
+  description: string;
+}) {
   return (
-    <motion.div 
+    <motion.div
       whileHover={{ scale: 1.02 }}
       className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300"
     >
@@ -372,9 +472,17 @@ function ServiceCard({ icon, title, description }: { icon: React.ReactNode; titl
   );
 }
 
-function TestimonialCard({ quote, author, year }: { quote: string; author: string; year: string }) {
+function TestimonialCard({
+  quote,
+  author,
+  year,
+}: {
+  quote: string;
+  author: string;
+  year: string;
+}) {
   return (
-    <motion.div 
+    <motion.div
       whileHover={{ scale: 1.02 }}
       className="bg-white p-6 rounded-lg shadow-lg relative"
     >
