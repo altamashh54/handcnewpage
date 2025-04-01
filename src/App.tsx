@@ -93,12 +93,7 @@ function App() {
         className="relative hero-curve"
       >
         <div className="absolute inset-0 bg-soft-pink/20"></div>
-        <div
-          className="h-[85vh] bg-cover bg-center bg-no-repeat relative"
-          style={{
-            backgroundImage: 'url("https://i.imgur.com/r6CDKjp.png")',
-          }}
-        >
+        <div className="h-[85vh] bg-cover bg-center bg-no-repeat relative bg-desktop-hero">
           <div className="absolute inset-0 bg-black/30"></div>
           <div className="relative container mx-auto px-4 h-full flex items-center justify-end">
             <div className="max-w-xl bg-white/95 p-8 rounded-lg shadow-lg md:bg-transparent md:p-0 md:shadow-none">
@@ -117,7 +112,7 @@ function App() {
                 className="font-mulish text-base md:text-lg text-gray-700 md:text-white mb-6 leading-relaxed"
               >
                 From coordinating vendors to setting up decor, we handle every
-                detail.
+                detail - within your budget.
               </motion.p>
               <motion.div
                 initial={{ y: 20, opacity: 0 }}
@@ -138,7 +133,8 @@ function App() {
                       🎁 Limited Time Bonus
                     </span>
                     : Get a Free Gloucestershire Vendor Guide with your
-                    consultation—vetted vendors to avoid hidden costs!{" "}
+                    consultation—access to the best & most trustworthy vendors
+                    to avoid hidden costs!{" "}
                   </p>
                 </div>
               </motion.div>
@@ -162,16 +158,6 @@ function App() {
             </h2>
             <div className="font-mulish text-sm md:text-base text-gray-600 max-w-4xl mx-auto space-y-6">
               <p>
-                Imagine walking down the aisle, knowing everything is handled
-                perfectly. No last-minute chaos, no stress—just pure joy, love,
-                and celebration.{" "}
-                <span className="font-bold text-sm md:text-base text-black-900">
-                  With 200+ UK couples
-                </span>{" "}
-                trusting us to bring their dream weddings to life, you're in the
-                best hands.
-              </p>
-              <p>
                 You've spent months imagining your perfect wedding, scrolling
                 through Pinterest, and saving ideas. But turning that vision
                 into reality?
@@ -187,6 +173,17 @@ function App() {
                 you walk down the aisle, you're not thinking about timelines or
                 to-do lists. You're soaking in the magic of the day, completely
                 present, surrounded by love.
+              </p>
+
+              <p>
+                Imagine walking down the aisle, knowing everything is handled
+                perfectly. No last-minute chaos, no stress—just pure joy, love,
+                and celebration.{" "}
+                <span className="font-bold text-sm md:text-base text-black-900">
+                  With 200+ UK couples
+                </span>{" "}
+                trusting us to bring their dream weddings to life, you're in the
+                best hands.
               </p>
               <p>
                 <span className="font-bold text-sm md:text-base text-black-900">

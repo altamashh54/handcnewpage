@@ -4,12 +4,17 @@
 
 @layer base {
   html {
-    font-family: 'Mulish', sans-serif;
+    font-family: "Mulish", sans-serif;
     scroll-behavior: smooth;
   }
 
-  h1, h2, h3, h4, h5, h6 {
-    font-family: 'Playfair Display', serif;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Playfair Display", serif;
   }
 }
 
@@ -18,7 +23,7 @@
 }
 
 .hero-curve::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: -2px;
   left: 0;
@@ -32,8 +37,18 @@
   background-color: #ffdfd9;
 }
 
-@media (max-width: 640px) {
-  .hero-curve::after {
-    height: 40px;
+/* Added these two classes for responsive background images */
+/* Updated CSS for index.css */
+.bg-mobile-hero {
+  background-image: url("https://i.imgur.com/tRGhgye.png");
+}
+
+.bg-desktop-hero {
+  background-image: url("https://i.imgur.com/8Cm3bLk.png");
+}
+
+@media (max-width: 767px) {
+  .bg-desktop-hero {
+    background-image: url("https://i.imgur.com/tRGhgye.png");
   }
 }
