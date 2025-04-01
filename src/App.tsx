@@ -291,12 +291,7 @@ function App() {
             <p className="text-center mb-6 font-mulish text-sm md:text-base text-gray-600">
               Fill out the form below, and we'll get in touch.
             </p>
-            <form
-              name="contact"
-              data-netlify="true"
-              className="space-y-4"
-              netlify
-            >
+            <form name="contact" className="space-y-4" netlify>
               <div>
                 <label
                   htmlFor="name"
