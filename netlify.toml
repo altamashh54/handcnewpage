@@ -4,3 +4,8 @@
 
 [form]
   name = "contact"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
