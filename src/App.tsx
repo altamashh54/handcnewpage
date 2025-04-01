@@ -291,7 +291,12 @@ function App() {
             <p className="text-center mb-6 font-mulish text-sm md:text-base text-gray-600">
               Fill out the form below, and we'll get in touch.
             </p>
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form
+              name="contact"
+              data-netlify="true"
+              onSubmit={handleSubmit}
+              className="space-y-4"
+            >
               <div>
                 <label
                   htmlFor="name"
@@ -382,6 +387,9 @@ function App() {
                   }
                 ></textarea>
               </div>
+
+              <input type="hidden" name="form-name" value="contact" />
+
               <motion.button
                 type="submit"
                 whileHover={{ scale: 1.02 }}
