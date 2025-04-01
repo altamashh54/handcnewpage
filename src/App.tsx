@@ -11,8 +11,9 @@ import {
   Facebook,
 } from "lucide-react";
 import { motion, animate } from "framer-motion";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Link } from "react-router-dom";
 import ThankYou from "./ThankYou";
+import OnboardingProcess from "./OnboardingProcess";
 
 function App() {
   const [formData, setFormData] = useState({
@@ -465,12 +466,19 @@ function App() {
               <div className="container mx-auto px-4">
                 <div className="flex flex-col md:flex-row justify-between items-start md:items-center">
                   <div className="flex flex-col space-y-4 mb-6 md:mb-0">
-                    <img
-                      src="/images/logocompressed.webp"
-                      alt="Haybales & Chandeliers Logo"
-                      className="h-16 object-contain"
-                      loading="lazy"
-                    />
+                    <Link
+                      to="/"
+                      onClick={() =>
+                        window.scrollTo({ top: 0, behavior: "smooth" })
+                      }
+                    >
+                      <img
+                        src="/images/logocompressed.webp"
+                        alt="Haybales & Chandeliers Logo"
+                        className="h-16 object-contain hover:opacity-80 transition-opacity"
+                        loading="lazy"
+                      />
+                    </Link>
 
                     <div className="flex items-start space-x-4">
                       <a
@@ -500,14 +508,22 @@ function App() {
                   </div>
                   <div className="flex flex-col items-start space-y-2 text-sm">
                     <p>© 2025 Haybales & Chandeliers. All rights reserved.</p>
-                    <a
-                      href="https://www.freeprivacypolicy.com/live/aba10e91-e336-4056-af89-7c2f9d21690a"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="hover:text-soft-pink transition-colors"
-                    >
-                      Privacy Policy
-                    </a>
+                    <div className="flex space-x-4">
+                      <Link
+                        to="/onboarding-process#hero"
+                        className="hover:text-soft-pink transition-colors"
+                      >
+                        Onboarding Process
+                      </Link>
+                      <a
+                        href="https://www.freeprivacypolicy.com/live/aba10e91-e336-4056-af89-7c2f9d21690a"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:text-soft-pink transition-colors"
+                      >
+                        Privacy Policy
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -516,6 +532,7 @@ function App() {
         }
       />
       <Route path="/thank-you" element={<ThankYou />} />
+      <Route path="/onboarding-process" element={<OnboardingProcess />} />
     </Routes>
   );
 }
