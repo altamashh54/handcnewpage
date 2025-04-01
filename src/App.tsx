@@ -50,16 +50,31 @@ function App() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    const form = e.target as HTMLFormElement;
 
-    const response = await fetch("/.netlify/functions/send-email", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(formData),
-    });
+    try {
+      const response = await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams({
+          "form-name": "contact",
+          ...formData,
+        }).toString(),
+      });
 
-    if (response.ok) {
-      alert("Form submitted! We will contact you soon.");
-    } else {
+      if (response.ok) {
+        alert("Form submitted! We will contact you soon.");
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          message: "",
+          weddingDate: "",
+        });
+      } else {
+        alert("Error submitting form. Please try again.");
+      }
+    } catch (error) {
       alert("Error submitting form. Please try again.");
     }
   };
@@ -291,7 +306,21 @@ function App() {
             <p className="text-center mb-6 font-mulish text-sm md:text-base text-gray-600">
               Fill out the form below, and we'll get in touch.
             </p>
-            <form name="contact" className="space-y-4" netlify>
+            <form
+              name="contact"
+              method="POST"
+              data-netlify="true"
+              netlify-honeypot="bot-field"
+              className="space-y-4"
+              onSubmit={handleSubmit}
+            >
+              <input type="hidden" name="form-name" value="contact" />
+              <p className="hidden">
+                <label>
+                  Don't fill this out if you're human:{" "}
+                  <input name="bot-field" />
+                </label>
+              </p>
               <div>
                 <label
                   htmlFor="name"
@@ -302,6 +331,7 @@ function App() {
                 <input
                   type="text"
                   id="name"
+                  name="name"
                   className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-soft-pink transition-all duration-300"
                   value={formData.name}
                   onChange={(e) =>
@@ -320,6 +350,7 @@ function App() {
                 <input
                   type="email"
                   id="email"
+                  name="email"
                   className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-soft-pink transition-all duration-300"
                   value={formData.email}
                   onChange={(e) =>
@@ -338,6 +369,7 @@ function App() {
                 <input
                   type="tel"
                   id="phone"
+                  name="phone"
                   className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-soft-pink transition-all duration-300"
                   value={formData.phone}
                   onChange={(e) =>
@@ -356,6 +388,7 @@ function App() {
                 <input
                   type="date"
                   id="weddingDate"
+                  name="weddingDate"
                   min={today}
                   max={maxDateString}
                   className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-soft-pink transition-all duration-300"
@@ -374,6 +407,7 @@ function App() {
                 </label>
                 <textarea
                   id="message"
+                  name="message"
                   rows={4}
                   className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-soft-pink transition-all duration-300"
                   value={formData.message}
@@ -382,8 +416,6 @@ function App() {
                   }
                 ></textarea>
               </div>
-
-              <input type="hidden" name="form-name" value="contact" />
 
               <motion.button
                 type="submit"
