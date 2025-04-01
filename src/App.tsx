@@ -296,6 +296,7 @@ function App() {
               data-netlify="true"
               onSubmit={handleSubmit}
               className="space-y-4"
+              netlify
             >
               <div>
                 <label
