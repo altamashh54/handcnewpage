@@ -20,7 +20,7 @@ function ThankYou() {
       <div
         className="relative h-[40vh] bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: "url('logocompressed.webp')",
+          backgroundImage: "url('/images/thankyouhero.webp')",
         }}
       >
         <div className="absolute inset-0 bg-black/50"></div>
