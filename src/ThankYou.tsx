@@ -20,7 +20,7 @@ function ThankYou() {
       <div
         className="relative h-[40vh] bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: "url('/images/thankyouhero.webp')",
+          backgroundImage: "url('/images/thankyouherofinal.webp')",
         }}
       >
         <div className="absolute inset-0 bg-black/50"></div>
@@ -32,7 +32,7 @@ function ThankYou() {
             className="text-center text-white"
           >
             <h1 className="font-playfair text-4xl md:text-6xl mb-4">
-              Your Info is with us!
+              Form Submitted Successfully.
             </h1>
             <p className="font-mulish text-xl md:text-2xl">
               Expect a call within the next 12 Hours!
@@ -74,12 +74,12 @@ function ThankYou() {
                     A Quick Call
                   </h3>
                   <p className="font-mulish text-gray-600 leading-relaxed text-lg">
-                    We'll start with a friendly, no-pressure call to understand
-                    where you are in your wedding planning. Whether you're just
-                    starting to dream about your big day or you're already
-                    knee-deep in plans, we'll listen to your vision, your
-                    concerns, and your unique needs. This call is all about
-                    understanding YOU and your wedding—no strings attached.
+                    We'll start with a candid, no-pressure call to understand
+                    where you are right now. Whether you're just starting to
+                    dream about your big day or you're already knee-deep in
+                    plans, we'll listen to your vision, your concerns, and your
+                    unique needs. This call is all about understanding YOU and
+                    your wedding—no strings attached.
                   </p>
                 </div>
               </div>
@@ -107,12 +107,12 @@ function ThankYou() {
                     Consultation: Whatever Works for You
                   </h3>
                   <p className="font-mulish text-gray-600 leading-relaxed text-lg">
-                    Next, we'll set up a free, relaxed consultation. Whether
-                    it's over a coffee in person or from the comfort of your
-                    home online, we'll sit down and talk through your vision,
-                    your priorities, and your budget. We understand that every
-                    couple is different, and our goal is to give you a
-                    customized plan that fits you perfectly.
+                    Next, we'll set up a consultation. Whether it's over a
+                    coffee in person or from the comfort of your home online,
+                    we'll sit down and talk through your vision, your
+                    priorities, and your budget. We understand that every couple
+                    is different, and our goal is to give you a customized plan
+                    that fits you perfectly.
                   </p>
                 </div>
               </div>
@@ -144,7 +144,8 @@ function ThankYou() {
                     knowledge of the wedding industry—what's standard, what's
                     expected, and how to navigate the tricky parts of planning.
                     Plus, you'll get our exclusive Gloucestershire Vendor Guide,
-                    carefully curated just for you.
+                    carefully curated to vet the best of the best who won't let
+                    you down.
                   </p>
                 </div>
               </div>
@@ -174,9 +175,9 @@ function ThankYou() {
                   <p className="font-mulish text-gray-600 leading-relaxed text-lg">
                     At this point, the ball is in your court. If you feel
                     confident and excited to move forward with us, we'll start
-                    creating your perfect wedding journey. If not, that's
-                    perfectly fine too—no pressure. You're welcome to reach out
-                    anytime if you need advice.
+                    crafting the wedding journey. If not, that's perfectly fine
+                    too—no. You're always welcome to reach out anytime if you
+                    need advice.
                   </p>
                 </div>
               </div>
@@ -190,11 +191,10 @@ function ThankYou() {
             className="text-center mt-16 bg-soft-pink/10 p-8 rounded-2xl max-w-2xl mx-auto"
           >
             <p className="font-mulish text-2xl text-gray-800 mb-2">
-              P.S. Check your email now
+              P.S. Keep an eye out for an email from us!
             </p>
             <p className="font-mulish text-gray-800 text-lg">
-              We've got a surprise waiting for you! 🎁 (Check your spam folder
-              if you don't see it)
+              We've may send you a gift 🎁
             </p>
           </motion.div>
         </div>

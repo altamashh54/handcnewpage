@@ -9,6 +9,7 @@ import {
   Send,
   Instagram,
   Facebook,
+  ArrowDown,
 } from "lucide-react";
 import { motion, animate } from "framer-motion";
 import { Routes, Route, Link } from "react-router-dom";
@@ -178,9 +179,8 @@ function App() {
                       transition={{ duration: 0.8, delay: 0.2 }}
                       className="font-mulish text-base md:text-lg text-gray-700 md:text-white mb-6 leading-relaxed"
                     >
-                      Don't know where to start? See how we've helped 200+
-                      Brides craft the perfect vision and brought it to life -
-                      within their budget.
+                      Don't know where to start? See how we've helped over 200
+                      Brides craft the perfect wedding- within their budget.
                     </motion.p>
                     <motion.div
                       initial={{ y: 20, opacity: 0 }}
@@ -238,10 +238,10 @@ function App() {
                     <p>
                       We'll handle the logistics, the details, and the stress—so
                       you don't have to. From coordinating vendors to setting up
-                      the perfect decor that you envision, we'll ensure
-                      everything is exactly as you imagined. Instead of
-                      stressing over timelines and to-do lists, you can now be
-                      excited again like you were when you first put that
+                      the perfect decor, we'll ensure everything is exactly as
+                      you imagined it to be. So instead of stressing over
+                      timelines and to-do lists, you can be excited about your
+                      wedding day like you were when you first put that
                       engagement ring on.{" "}
                     </p>
 
@@ -250,10 +250,9 @@ function App() {
                       handled perfectly. No last-minute chaos, no stress—just
                       pure joy, love, and celebration.{" "}
                       <span className="font-bold text-sm md:text-base text-black-900">
-                        With 200+ UK couples
+                        After helping over 200 Couples,
                       </span>{" "}
-                      trusting us to bring their dream weddings to life, we know
-                      exactly what we're doing.
+                      we know exactly how to help you - no matter where you are.
                     </p>
                     <p>
                       <span className="font-bold text-sm md:text-base text-black-900">
@@ -276,7 +275,7 @@ function App() {
                   <ServiceCard
                     icon={<Calendar className="w-6 h-6 text-soft-pink" />}
                     title="Wedding Planning & Coordination"
-                    description="From partial planning to full wedding day coordination, we handle logistics, vendor communication & timeline management."
+                    description="Handling backend logistics, vendor communication & timeline management."
                   />
                   <ServiceCard
                     icon={<BellRing className="w-6 h-6 text-soft-pink" />}
@@ -309,8 +308,9 @@ function App() {
                 <h2 className="font-playfair text-2xl md:text-3xl text-center mb-12">
                   From Isolated to Excited—We're By Your Side, Every Step of the
                   Way{" "}
-                  <span className="block mt-6 text-2xl md:text-3xl text-black-600">
+                  <span className="block mt-6 text-2xl md:text-3xl text-black-600 flex items-center justify-center gap-4">
                     What Brides Say About Us
+                    <ArrowDown className="w-8 h-8 text-soft-pink animate-bounce" />
                   </span>
                 </h2>
                 <div className="grid md:grid-cols-2 gap-8">
@@ -370,17 +370,9 @@ function App() {
               <div className="container mx-auto px-4">
                 <div className="max-w-2xl mx-auto">
                   <h2 className="font-playfair text-2xl md:text-3xl text-center mb-6">
-                    Contact Us
+                    Contact Us - Only 5 spots left!
                   </h2>
-                  <div className="text-center mb-8">
-                    <button
-                      onClick={scrollToContact}
-                      className="bg-gray-900 text-white px-6 py-3 rounded-full font-mulish font-semibold hover:bg-gray-800 transition duration-300 hover:scale-105 transform text-sm md:text-base"
-                      aria-label="Book consultation"
-                    >
-                      Lock In Your Free Consultation—5 Spots Left!
-                    </button>
-                  </div>
+
                   <p className="text-center mb-6 font-mulish text-sm md:text-base text-gray-600">
                     Fill out the form below, and we'll get in touch.
                   </p>
@@ -507,7 +499,7 @@ function App() {
                       whileTap={{ scale: 0.98 }}
                       className="w-full bg-gray-900 text-white px-6 py-3 rounded-full font-mulish font-semibold hover:bg-gray-800 transition duration-300 flex items-center justify-center space-x-2 text-sm md:text-base"
                     >
-                      <span>Submit</span>
+                      <span>Lock In My Free Consultation!</span>
                       <Send className="w-4 h-4" />
                     </motion.button>
                   </form>

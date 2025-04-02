@@ -40,15 +40,15 @@
 /* Added these two classes for responsive background images */
 /* Updated CSS for index.css */
 .bg-mobile-hero {
-  background-image: url("/images/heroimage.webp");
+  background-image: url("/images/heromobile.webp");
 }
 
 .bg-desktop-hero {
-  background-image: url("/images/heroimagedesktop.webp");
+  background-image: url("/images/herodesktop.webp");
 }
 
 @media (max-width: 767px) {
   .bg-desktop-hero {
-    background-image: url("/images/heroimage.webp");
+    background-image: url("/images/heromobile.webp");
   }
 }
