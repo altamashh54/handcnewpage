@@ -26,6 +26,7 @@ function App() {
 
   const contactFormRef = useRef<HTMLDivElement>(null);
   const [currentImage, setCurrentImage] = useState(0);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const images = [
     "/images/carousel1.webp",
@@ -55,8 +56,7 @@ function App() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const form = e.target as HTMLFormElement;
-
+    setIsSubmitting(true);
     try {
       // First submit the form to Netlify's built-in form handling
       const netlifyResponse = await fetch("/", {
@@ -86,33 +86,64 @@ function App() {
 
       // Redirect to thank you page on success
       window.location.href = "/thank-you";
+
+      // Reset form data
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        message: "",
+        weddingDate: "",
+      });
     } catch (error) {
       console.error("Error:", error);
       alert("Error submitting form. Please try again.");
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
   const scrollToContact = () => {
-    const contactSection = contactFormRef.current;
-    if (!contactSection) return;
+    if ("scrollBehavior" in document.documentElement.style) {
+      const contactSection = contactFormRef.current;
+      if (!contactSection) return;
 
-    const start = window.pageYOffset;
-    const end = contactSection.offsetTop;
+      const start = window.pageYOffset;
+      const end = contactSection.offsetTop;
 
-    animate(start, end, {
-      duration: 1.2, // Adjust duration as needed
-      ease: [0.32, 0.72, 0, 1], // Custom easing
-      onUpdate: (value) => {
-        window.scrollTo(0, value);
-      },
-      onComplete: () => {
-        // Optional: Focus first input
-        const firstInput = contactSection.querySelector('input[type="text"]');
-        if (firstInput instanceof HTMLInputElement) {
-          firstInput.focus();
-        }
-      },
-    });
+      animate(start, end, {
+        duration: 1.2, // Adjust duration as needed
+        ease: [0.32, 0.72, 0, 1], // Custom easing
+        onUpdate: (value) => {
+          window.scrollTo(0, value);
+        },
+        onComplete: () => {
+          // Optional: Focus first input
+          const firstInput = contactSection.querySelector('input[type="text"]');
+          if (firstInput instanceof HTMLInputElement) {
+            firstInput.focus();
+          }
+        },
+      });
+    } else {
+      // Fallback for browsers that don't support smooth scrolling
+      contactFormRef.current?.scrollIntoView();
+    }
+  };
+
+  const validateForm = () => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const phoneRegex = /^[\d\s+()-]+$/;
+
+    if (!emailRegex.test(formData.email)) {
+      alert("Please enter a valid email address");
+      return false;
+    }
+    if (!phoneRegex.test(formData.phone)) {
+      alert("Please enter a valid phone number");
+      return false;
+    }
+    return true;
   };
 
   return (
@@ -160,6 +191,7 @@ function App() {
                       <button
                         onClick={scrollToContact}
                         className="bg-white text-gray-900 px-6 py-3 rounded-full font-mulish font-semibold hover:bg-gray-100 transition duration-300 w-full sm:w-auto hover:scale-105 transform text-sm md:text-base"
+                        aria-label="Book consultation"
                       >
                         Book Your Free Consultation Now!
                       </button>
@@ -232,6 +264,7 @@ function App() {
                       <button
                         onClick={scrollToContact}
                         className="bg-gray-900 text-white px-6 py-3 rounded-full font-mulish font-semibold hover:bg-gray-800 transition duration-300 hover:scale-105 transform text-sm md:text-base"
+                        aria-label="Book consultation"
                       >
                         Get Your Free Vendor Guide & Consultation
                       </button>
@@ -315,6 +348,9 @@ function App() {
                         alt={`Wedding moment ${index + 1}`}
                         className="w-full h-full object-contain bg-white"
                         loading={index === 0 ? "eager" : "lazy"}
+                        onError={(e) => {
+                          e.currentTarget.src = "/images/fallback.webp";
+                        }}
                       />
                     </motion.div>
                   ))}
@@ -340,6 +376,7 @@ function App() {
                     <button
                       onClick={scrollToContact}
                       className="bg-gray-900 text-white px-6 py-3 rounded-full font-mulish font-semibold hover:bg-gray-800 transition duration-300 hover:scale-105 transform text-sm md:text-base"
+                      aria-label="Book consultation"
                     >
                       Lock In Your Free Consultation—5 Spots Left!
                     </button>

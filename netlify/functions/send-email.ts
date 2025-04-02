@@ -18,6 +18,11 @@ emailjs.init({
   privateKey: process.env.EMAILJS_PRIVATE_KEY as string,
 });
 
+// Add runtime checks for environment variables
+if (!process.env.EMAILJS_PUBLIC_KEY) {
+  throw new Error("Missing EMAILJS_PUBLIC_KEY");
+}
+
 export const handler: Handler = async (event) => {
   try {
     // Only allow POST requests
@@ -51,7 +56,10 @@ export const handler: Handler = async (event) => {
     console.error("Error sending email:", error);
     return {
       statusCode: 500,
-      body: JSON.stringify({ error: "Failed to send email" }),
+      body: JSON.stringify({
+        error: "Failed to send email",
+        details: error instanceof Error ? error.message : "Unknown error",
+      }),
     };
   }
 };
