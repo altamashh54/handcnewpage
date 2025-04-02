@@ -306,8 +306,9 @@ function App() {
             >
               <div className="container mx-auto px-4">
                 <h2 className="font-playfair text-2xl md:text-3xl text-center mb-12">
-                  From Isolated to Excited—We're By Your Side, Every Step of the
-                  Way{" "}
+                  <span className="block mb-2">From Isolated to Excited,</span>
+                  <span className="block mb-2">We're By Your Side -</span>
+                  <span className="block mb-6">Every Step of The Way</span>
                   <span className="block mt-6 text-2xl md:text-3xl text-black-600 flex items-center justify-center gap-4">
                     What Brides Say About Us
                     <ArrowDown className="w-8 h-8 text-soft-pink animate-bounce" />
