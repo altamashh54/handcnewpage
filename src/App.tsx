@@ -50,6 +50,42 @@ function App() {
     return () => clearInterval(interval);
   }, []);
 
+  // Improved hash navigation
+  useEffect(() => {
+    const handleHashChange = () => {
+      const hash = window.location.hash;
+      if (hash) {
+        // Remove the # from the hash
+        const elementId = hash.replace("#", "");
+        const element = document.getElementById(elementId);
+        if (element) {
+          // Wait for any animations/rendering to complete
+          setTimeout(() => {
+            const headerOffset = 80; // Adjust this value based on your header height
+            const elementPosition = element.getBoundingClientRect().top;
+            const offsetPosition =
+              elementPosition + window.pageYOffset - headerOffset;
+
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: "smooth",
+            });
+          }, 300); // Increased timeout to ensure content is rendered
+        }
+      }
+    };
+
+    // Handle initial hash on page load
+    handleHashChange();
+
+    // Listen for hash changes
+    window.addEventListener("hashchange", handleHashChange);
+
+    return () => {
+      window.removeEventListener("hashchange", handleHashChange);
+    };
+  }, []);
+
   const today = new Date().toISOString().split("T")[0];
   const maxDate = new Date();
   maxDate.setFullYear(maxDate.getFullYear() + 5);
@@ -155,6 +191,7 @@ function App() {
           <div className="min-h-screen bg-white">
             {/* Hero Section */}
             <motion.div
+              id="hero"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 1 }}
@@ -297,6 +334,7 @@ function App() {
 
             {/* Testimonials Section */}
             <motion.div
+              id="testimonials"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
