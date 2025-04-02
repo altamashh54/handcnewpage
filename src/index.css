@@ -52,3 +52,15 @@
     background-image: url("/images/heromobile.webp");
   }
 }
+
+/* Add responsive padding for mobile */
+@media (max-width: 768px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .hero-curve::after {
+    height: 40px;
+  }
+}

@@ -20,13 +20,28 @@ function OnboardingProcess() {
   const maxDateString = maxDate.toISOString().split("T")[0];
 
   useEffect(() => {
-    const hash = window.location.hash;
-    if (hash === "#hero") {
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
-    }
+    const handleHash = () => {
+      const hash = window.location.hash;
+      if (hash) {
+        setTimeout(() => {
+          const element = document.getElementById(hash.replace("#", ""));
+          if (element) {
+            const headerOffset = 80;
+            const elementPosition = element.getBoundingClientRect().top;
+            const offsetPosition =
+              elementPosition + window.scrollY - headerOffset;
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: "smooth",
+            });
+          }
+        }, 100);
+      }
+    };
+
+    handleHash();
+    window.addEventListener("hashchange", handleHash);
+    return () => window.removeEventListener("hashchange", handleHash);
   }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -64,7 +79,7 @@ function OnboardingProcess() {
       <div
         className="relative h-[40vh] bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: "url('/images/thankyouhero.webp')",
+          backgroundImage: "url('/images/thankyouherofinal.webp')",
         }}
       >
         <div className="absolute inset-0 bg-black/50"></div>
@@ -76,7 +91,7 @@ function OnboardingProcess() {
             className="text-center text-white"
           >
             <h1 className="font-playfair text-4xl md:text-6xl mb-4">
-              The Exact Step-by-Step Process of Starting this Journey Together
+              The Step-by-Step Process of Starting this Journey
             </h1>
           </motion.div>
         </div>
@@ -105,12 +120,12 @@ function OnboardingProcess() {
                     A Quick Call
                   </h3>
                   <p className="font-mulish text-gray-600 leading-relaxed text-lg">
-                    We'll start with a friendly, no-pressure call to understand
-                    where you are in your wedding planning. Whether you're just
-                    starting to dream about your big day or you're already
-                    knee-deep in plans, we'll listen to your vision, your
-                    concerns, and your unique needs. This call is all about
-                    understanding YOU and your wedding—no strings attached.
+                  We'll start with a candid, no-pressure call to understand
+                    where you are right now. Whether you're just starting to
+                    dream about your big day or you're already knee-deep in
+                    plans, we'll listen to your vision, your concerns, and your
+                    unique needs. This call is all about understanding YOU and
+                    your wedding—no strings attached.
                   </p>
                 </div>
               </div>
@@ -138,16 +153,12 @@ function OnboardingProcess() {
                     Consultation: Whatever Works for You
                   </h3>
                   <p className="font-mulish text-gray-600 leading-relaxed text-lg">
-                    Next, we'll set up a free, relaxed consultation. Whether
-                    it's over a coffee in person or from the comfort of your
-                    home online, we'll sit down and talk through your vision,
-                    your priorities, and your budget. We understand that every
-                    couple is different, and our goal is to give you a
-                    customized plan that fits you perfectly. We'll help you
-                    refine your ideas, offer guidance on what's realistic, and
-                    break down the process so it's easy to follow. Whether
-                    you're feeling completely lost or you just need some
-                    clarity, we're here to provide it.
+                  Next, we'll set up a consultation. Whether it's over a
+                    coffee in person or from the comfort of your home online,
+                    we'll sit down and talk through your vision, your
+                    priorities, and your budget. We understand that every couple
+                    is different, and our goal is to give you a customized plan
+                    that fits you perfectly.
                   </p>
                 </div>
               </div>
@@ -176,15 +187,12 @@ function OnboardingProcess() {
                     Guide
                   </h3>
                   <p className="font-mulish text-gray-600 leading-relaxed text-lg">
-                    This is where the real magic happens. We'll give you insider
+                  This is where the real magic happens. We'll give you insider
                     knowledge of the wedding industry—what's standard, what's
                     expected, and how to navigate the tricky parts of planning.
-                    You'll learn exactly what to expect at every stage and how
-                    to make the most of your budget. Plus, we'll give you direct
-                    access to Gloucestershire's best vendors—curated just for
-                    you. No more sifting through endless options, wondering
-                    who's trustworthy. You'll have everything you need to make
-                    informed decisions.
+                    Plus, you'll get our exclusive Gloucestershire Vendor Guide,
+                    carefully curated to vet the best of the best who won't let
+                    you down.
                   </p>
                 </div>
               </div>
@@ -212,14 +220,11 @@ function OnboardingProcess() {
                     Your Decision
                   </h3>
                   <p className="font-mulish text-gray-600 leading-relaxed text-lg">
-                    At this point, the ball is in your court. If you feel
+                  At this point, the ball is in your court. If you feel
                     confident and excited to move forward with us, we'll start
-                    creating a personalized timeline and take care of everything
-                    from there. If not, that's perfectly fine too—no pressure.
-                    You're welcome to reach out anytime if you need advice or
-                    help with anything. We're always here for you. Whether you
-                    choose to work with us or not, we want you to feel
-                    empowered, informed, and supported throughout your journey.
+                    crafting the wedding journey. If not, that's perfectly fine
+                    too—no. You're always welcome to reach out anytime if you
+                    need advice.
                   </p>
                 </div>
               </div>

@@ -50,33 +50,43 @@ function App() {
     return () => clearInterval(interval);
   }, []);
 
-  // Improved hash navigation
   useEffect(() => {
-    const handleHashChange = () => {
-      const hash = window.location.hash;
-      if (hash) {
-        // Remove the # from the hash
-        const elementId = hash.replace("#", "");
-        const element = document.getElementById(elementId);
-        if (element) {
-          // Wait for any animations/rendering to complete
-          setTimeout(() => {
-            const headerOffset = 80; // Adjust this value based on your header height
-            const elementPosition = element.getBoundingClientRect().top;
-            const offsetPosition =
-              elementPosition + window.pageYOffset - headerOffset;
+    const scrollToSection = (elementId: string) => {
+      const element = document.getElementById(elementId);
+      if (element) {
+        const headerOffset = 80;
+        const elementPosition = element.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.scrollY - headerOffset;
 
-            window.scrollTo({
-              top: offsetPosition,
-              behavior: "smooth",
-            });
-          }, 300); // Increased timeout to ensure content is rendered
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth",
+        });
+
+        // Add highlight effect for freeguide
+        if (elementId === "freeguide") {
+          element.classList.add("highlight");
+          setTimeout(() => {
+            element.classList.remove("highlight");
+          }, 2000);
         }
       }
     };
 
+    const handleHashChange = () => {
+      const hash = window.location.hash.replace("#", "");
+      if (hash) {
+        // Wait for any animations/content to load
+        setTimeout(() => {
+          scrollToSection(hash);
+        }, 300);
+      }
+    };
+
     // Handle initial hash on page load
-    handleHashChange();
+    if (window.location.hash) {
+      handleHashChange();
+    }
 
     // Listen for hash changes
     window.addEventListener("hashchange", handleHashChange);
@@ -93,6 +103,9 @@ function App() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!validateForm()) {
+      return;
+    }
     setIsSubmitting(true);
     try {
       // First submit the form to Netlify's built-in form handling
@@ -122,9 +135,6 @@ function App() {
       }
 
       // Redirect to thank you page on success
-      window.location.href = "/thank-you";
-
-      // Reset form data
       setFormData({
         name: "",
         email: "",
@@ -132,9 +142,10 @@ function App() {
         message: "",
         weddingDate: "",
       });
+      window.location.href = "/thank-you";
     } catch (error) {
       console.error("Error:", error);
-      alert("Error submitting form. Please try again.");
+      alert("Something went wrong. Please try again or contact us directly.");
     } finally {
       setIsSubmitting(false);
     }
@@ -191,7 +202,7 @@ function App() {
           <div className="min-h-screen bg-white">
             {/* Hero Section */}
             <motion.div
-              id="hero"
+              id="contact"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 1 }}
@@ -208,7 +219,7 @@ function App() {
                       transition={{ duration: 0.8 }}
                       className="font-playfair font-black text-3xl md:text-5xl text-gray-900 md:text-white mb-4"
                     >
-                      Briging it all together & taking the stress away
+                      Bringing it all together & taking the stress away
                     </motion.h1>
                     <motion.p
                       initial={{ y: 20, opacity: 0 }}
@@ -218,7 +229,7 @@ function App() {
                     >
                       Don't know where to start? See how we've helped over 200
                       Brides craft the perfect wedding & bring their Pinterest
-                      vision to life-within their budget.
+                      vision to life—within their budget.
                     </motion.p>
                     <motion.div
                       initial={{ y: 20, opacity: 0 }}
@@ -231,11 +242,10 @@ function App() {
                         className="bg-white text-gray-900 px-6 py-3 rounded-full font-mulish font-semibold hover:bg-gray-100 transition duration-300 w-full sm:w-auto hover:scale-105 transform text-sm md:text-base"
                         aria-label="Book consultation"
                       >
-                        Book a Complimentary Consultation
+                        Book Your Free Consultation Now!
                       </button>
                       <div className="bg-[#FDF3F3] text-[#333333] px-4 py-3 rounded-lg text-xs md:text-sm font-mulish">
                         <p>
-                          {" "}
                           <span className="font-bold text-sm md:text-base text-black-900">
                             🎁 Limited Time Bonus
                           </span>
@@ -277,7 +287,7 @@ function App() {
                     <p>
                       We'll handle the logistics, the details, and the stress—so
                       you don't have to. From coordinating vendors to setting up
-                      the perfect decor, we'll ensure everything is exactly as
+                      the perfect décor, we'll ensure everything is exactly as
                       you imagined it to be. So instead of stressing over
                       timelines and to-do lists, you can be excited about your
                       wedding day like you were when you first put that
@@ -287,7 +297,7 @@ function App() {
                     <p>
                       Imagine walking down the aisle, gleaming while people
                       stare at you in awe; knowing everything is handled
-                      perfectly. No last-minute chaos, no stress—just pure joy,
+                      perfectl—no last-minute chaos, no stress—just pure joy,
                       love, and celebration.{" "}
                       <span className="font-bold text-sm md:text-base text-black-900">
                         After guiding over 200 Couples,
@@ -307,7 +317,7 @@ function App() {
                   </div>
                 </div>
 
-                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+                <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6 md:gap-8">
                   <ServiceCard
                     icon={<Calendar className="w-6 h-6 text-soft-pink" />}
                     title="Wedding Planning & Coordination"
@@ -315,7 +325,7 @@ function App() {
                   />
                   <ServiceCard
                     icon={<BellRing className="w-6 h-6 text-soft-pink" />}
-                    title="Wedding Decor Hire"
+                    title="Wedding Décor Hire"
                     description="Elegant tablescapes, breathtaking backdrops & stylish centerpieces without the hassle of buying or DIYing."
                   />
                   <ServiceCard
@@ -326,8 +336,15 @@ function App() {
                   <ServiceCard
                     icon={<Heart className="w-6 h-6 text-soft-pink" />}
                     title="Exclusive Booking Bonus"
-                    description="Choose between a Free Audio Guestbook OR 20% Blue Light Discount on ALL Decor Rentals."
+                    description="Choose between a Free Audio Guestbook OR 20% Blue Light Discount on ALL Décor Rentals."
                   />
+                  <div id="freeguide">
+                    <ServiceCard
+                      icon={<Star className="w-6 h-6 text-soft-pink" />}
+                      title="Free Vendor Guide"
+                      description="Handpicked Gloucestershire vendors who have been serving for 10+ Years to give you the best options. Save time & avoid hidden costs."
+                    />
+                  </div>
                 </div>
               </div>
             </motion.div>
@@ -401,7 +418,7 @@ function App() {
 
             {/* Contact Form */}
             <motion.div
-              id="contact"
+              id="form"
               ref={contactFormRef}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -412,7 +429,7 @@ function App() {
               <div className="container mx-auto px-4">
                 <div className="max-w-2xl mx-auto">
                   <h2 className="font-playfair text-2xl md:text-3xl text-center mb-6">
-                    Contact Us - 5 spots left!
+                    Contact Us - 5 spots left.
                   </h2>
 
                   <p className="text-center mb-6 font-mulish text-sm md:text-base text-gray-600">
@@ -537,11 +554,18 @@ function App() {
 
                     <motion.button
                       type="submit"
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
-                      className="w-full bg-gray-900 text-white px-6 py-3 rounded-full font-mulish font-semibold hover:bg-gray-800 transition duration-300 flex items-center justify-center space-x-2 text-sm md:text-base"
+                      disabled={isSubmitting}
+                      whileHover={{ scale: isSubmitting ? 1 : 1.02 }}
+                      whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
+                      className={`w-full ${
+                        isSubmitting ? "bg-gray-500" : "bg-gray-900"
+                      } text-white px-6 py-3 rounded-full font-mulish font-semibold hover:bg-gray-800 transition duration-300 flex items-center justify-center space-x-2 text-sm md:text-base`}
                     >
-                      <span>Lock In My Free Consultation!</span>
+                      <span>
+                        {isSubmitting
+                          ? "Submitting..."
+                          : "Lock In My Free Consultation!"}
+                      </span>
                       <Send className="w-4 h-4" />
                     </motion.button>
                   </form>
