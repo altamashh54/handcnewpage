@@ -250,7 +250,7 @@ function App() {
                       handled perfectly. No last-minute chaos, no stress—just
                       pure joy, love, and celebration.{" "}
                       <span className="font-bold text-sm md:text-base text-black-900">
-                        After helping over 200 Couples,
+                        After guiding over 200 Couples,
                       </span>{" "}
                       we know exactly how to help you - no matter where you are.
                     </p>
