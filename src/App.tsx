@@ -171,7 +171,7 @@ function App() {
                       transition={{ duration: 0.8 }}
                       className="font-playfair font-black text-3xl md:text-5xl text-gray-900 md:text-white mb-4"
                     >
-                      Your Dream Wedding, Planned Stress-Free
+                      Briging it all together & taking the stress away
                     </motion.h1>
                     <motion.p
                       initial={{ y: 20, opacity: 0 }}
@@ -180,7 +180,8 @@ function App() {
                       className="font-mulish text-base md:text-lg text-gray-700 md:text-white mb-6 leading-relaxed"
                     >
                       Don't know where to start? See how we've helped over 200
-                      Brides craft the perfect wedding- within their budget.
+                      Brides craft the perfect wedding & bring their vision to
+                      life- within their budget.
                     </motion.p>
                     <motion.div
                       initial={{ y: 20, opacity: 0 }}
@@ -193,7 +194,7 @@ function App() {
                         className="bg-white text-gray-900 px-6 py-3 rounded-full font-mulish font-semibold hover:bg-gray-100 transition duration-300 w-full sm:w-auto hover:scale-105 transform text-sm md:text-base"
                         aria-label="Book consultation"
                       >
-                        Book Your Free Consultation Now!
+                        Book a Complimentary Consultation
                       </button>
                       <div className="bg-[#FDF3F3] text-[#333333] px-4 py-3 rounded-lg text-xs md:text-sm font-mulish">
                         <p>
@@ -214,6 +215,7 @@ function App() {
 
             {/* Services Section */}
             <motion.div
+              id="services"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
@@ -254,18 +256,14 @@ function App() {
                       </span>{" "}
                       we know exactly how to help you - no matter where you are.
                     </p>
-                    <p>
-                      <span className="font-bold text-sm md:text-base text-black-900">
-                        Let's make it happen, together.{" "}
-                      </span>
-                    </p>
+
                     <div className="pt-6">
                       <button
                         onClick={scrollToContact}
                         className="bg-gray-900 text-white px-6 py-3 rounded-full font-mulish font-semibold hover:bg-gray-800 transition duration-300 hover:scale-105 transform text-sm md:text-base"
                         aria-label="Book consultation"
                       >
-                        Get Your Free Vendor Guide & Consultation
+                        Let's make it happen, together.
                       </button>
                     </div>
                   </div>
@@ -330,7 +328,10 @@ function App() {
             </motion.div>
 
             {/* Image Carousel Section */}
-            <div className="relative overflow-hidden bg-gray-50 py-12">
+            <div
+              id="gallery"
+              className="relative overflow-hidden bg-gray-50 py-12"
+            >
               <div className="max-w-5xl mx-auto px-4">
                 <div className="aspect-[3/2] relative rounded-lg overflow-hidden shadow-xl">
                   {images.map((image, index) => (
@@ -361,6 +362,7 @@ function App() {
 
             {/* Contact Form */}
             <motion.div
+              id="contact"
               ref={contactFormRef}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
