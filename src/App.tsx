@@ -180,8 +180,8 @@ function App() {
                       className="font-mulish text-base md:text-lg text-gray-700 md:text-white mb-6 leading-relaxed"
                     >
                       Don't know where to start? See how we've helped over 200
-                      Brides craft the perfect wedding & bring their vision to
-                      life- within their budget.
+                      Brides craft the perfect wedding & bring their Pinterest
+                      vision to life-within their budget.
                     </motion.p>
                     <motion.div
                       initial={{ y: 20, opacity: 0 }}
@@ -203,8 +203,8 @@ function App() {
                             🎁 Limited Time Bonus
                           </span>
                           : Get a Free Gloucestershire Vendor Guide with your
-                          consultation—access to the best & most trustworthy
-                          vendors to avoid hidden costs!{" "}
+                          consultation—handpicked trustworthy suppliers to save
+                          time and avoid hidden costs!{" "}
                         </p>
                       </div>
                     </motion.div>
