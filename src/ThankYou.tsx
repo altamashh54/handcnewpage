@@ -20,7 +20,7 @@ function ThankYou() {
       <div
         className="relative h-[40vh] bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: "url('/images/thankyouhero.webp')",
+          backgroundImage: "url('logocompressed.webp')",
         }}
       >
         <div className="absolute inset-0 bg-black/50"></div>
@@ -193,7 +193,8 @@ function ThankYou() {
               P.S. Check your email now
             </p>
             <p className="font-mulish text-gray-800 text-lg">
-              We've got a surprise waiting for you! 🎁
+              We've got a surprise waiting for you! 🎁 (Check your spam folder
+              if you don't see it)
             </p>
           </motion.div>
         </div>

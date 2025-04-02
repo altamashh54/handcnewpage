@@ -58,7 +58,8 @@ function App() {
     const form = e.target as HTMLFormElement;
 
     try {
-      const response = await fetch("/", {
+      // First submit the form to Netlify's built-in form handling
+      const netlifyResponse = await fetch("/", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: new URLSearchParams({
@@ -67,12 +68,26 @@ function App() {
         }).toString(),
       });
 
-      if (response.ok) {
-        window.location.href = "/thank-you";
-      } else {
-        alert("Error submitting form. Please try again.");
+      if (!netlifyResponse.ok) {
+        throw new Error("Netlify form submission failed");
       }
+
+      // Then trigger your custom function to send the welcome email
+      const emailResponse = await fetch("/.netlify/functions/send-email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      if (!emailResponse.ok) {
+        console.error("Failed to send welcome email");
+        // Still redirect even if email fails, but log the error
+      }
+
+      // Redirect to thank you page on success
+      window.location.href = "/thank-you";
     } catch (error) {
+      console.error("Error:", error);
       alert("Error submitting form. Please try again.");
     }
   };
@@ -132,8 +147,9 @@ function App() {
                       transition={{ duration: 0.8, delay: 0.2 }}
                       className="font-mulish text-base md:text-lg text-gray-700 md:text-white mb-6 leading-relaxed"
                     >
-                      We've helped 200+ Brides plan every detail from start to
-                      finish-within their budget. No matter where they started.
+                      Don't know where to start? See how we've helped 200+
+                      Brides craft the perfect vision and brought it to life -
+                      within their budget.
                     </motion.p>
                     <motion.div
                       initial={{ y: 20, opacity: 0 }}
@@ -193,7 +209,8 @@ function App() {
                       the perfect decor that you envision, we'll ensure
                       everything is exactly as you imagined. Instead of
                       stressing over timelines and to-do lists, you can now be
-                      excited again like you were when you got proposed.{" "}
+                      excited again like you were when you first put that
+                      engagement ring on.{" "}
                     </p>
 
                     <p>
@@ -203,8 +220,8 @@ function App() {
                       <span className="font-bold text-sm md:text-base text-black-900">
                         With 200+ UK couples
                       </span>{" "}
-                      trusting us to bring their dream weddings to life, you're
-                      in the best hands.
+                      trusting us to bring their dream weddings to life, we know
+                      exactly what we're doing.
                     </p>
                     <p>
                       <span className="font-bold text-sm md:text-base text-black-900">
