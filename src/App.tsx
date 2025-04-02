@@ -248,9 +248,10 @@ function App() {
                     </p>
 
                     <p>
-                      Imagine walking down the aisle, knowing everything is
-                      handled perfectly. No last-minute chaos, no stress—just
-                      pure joy, love, and celebration.{" "}
+                      Imagine walking down the aisle, gleaming while people
+                      stare at you in awe; knowing everything is handled
+                      perfectly. No last-minute chaos, no stress—just pure joy,
+                      love, and celebration.{" "}
                       <span className="font-bold text-sm md:text-base text-black-900">
                         After guiding over 200 Couples,
                       </span>{" "}
@@ -373,7 +374,7 @@ function App() {
               <div className="container mx-auto px-4">
                 <div className="max-w-2xl mx-auto">
                   <h2 className="font-playfair text-2xl md:text-3xl text-center mb-6">
-                    Contact Us - Only 5 spots left!
+                    Contact Us - 5 spots left!
                   </h2>
 
                   <p className="text-center mb-6 font-mulish text-sm md:text-base text-gray-600">
