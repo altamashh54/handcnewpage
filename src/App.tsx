@@ -564,7 +564,7 @@ function App() {
                       <span>
                         {isSubmitting
                           ? "Submitting..."
-                          : "Lock In My Free Consultation!"}
+                          : "Lock In My Free Consultation"}
                       </span>
                       <Send className="w-4 h-4" />
                     </motion.button>
