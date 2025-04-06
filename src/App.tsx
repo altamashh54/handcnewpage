@@ -242,7 +242,7 @@ function App() {
                         className="bg-white text-gray-900 px-6 py-3 rounded-full font-mulish font-semibold hover:bg-gray-100 transition duration-300 w-full sm:w-auto hover:scale-105 transform text-sm md:text-base"
                         aria-label="Book consultation"
                       >
-                        Book Your Free Consultation Now!
+                        Book Your Free Consultation Now
                       </button>
                       <div className="bg-[#FDF3F3] text-[#333333] px-4 py-3 rounded-lg text-xs md:text-sm font-mulish">
                         <p>
