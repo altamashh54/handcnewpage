@@ -228,7 +228,7 @@ function App() {
                       className="font-mulish text-base md:text-lg text-gray-700 md:text-white mb-6 leading-relaxed"
                     >
                       Don't know where to start? See how we've helped over 200
-                      Brides craft the perfect wedding & bring their Pinterest
+                      Brides craft their dream wedding & bring the Pinterest
                       vision to life—within their budget.
                     </motion.p>
                     <motion.div
