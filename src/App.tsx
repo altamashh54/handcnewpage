@@ -219,7 +219,7 @@ function App() {
                       transition={{ duration: 0.8 }}
                       className="font-playfair font-black text-3xl md:text-5xl text-gray-900 md:text-white mb-4"
                     >
-                      Bringing it all together & taking the stress away
+                      Bringing it all together & taking your stress away
                     </motion.h1>
                     <motion.p
                       initial={{ y: 20, opacity: 0 }}
