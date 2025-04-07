@@ -229,7 +229,7 @@ function App() {
                     >
                       Don't know where to start? See how we've helped over 200
                       Brides craft their dream wedding & bring the Pinterest
-                      vision to life—within their budget.
+                      vision to life—within budget.
                     </motion.p>
                     <motion.div
                       initial={{ y: 20, opacity: 0 }}
@@ -279,7 +279,7 @@ function App() {
                       You've spent months imagining your perfect wedding,
                       scrolling through Pinterest,planning tiny details and
                       saving ideas. But turning that vision into reality?
-                      <span className="font-bold text-sm md:text-base text-black-900">
+                      <span className="font-extrabold text-sm md:text-base text-black">
                         {" "}
                         That's where we come in.{" "}
                       </span>
@@ -297,12 +297,20 @@ function App() {
                     <p>
                       Imagine walking down the aisle, gleaming while people
                       stare at you in awe; knowing everything is handled
-                      perfectl—no last-minute chaos, no stress—just pure joy,
+                      perfectly—no last-minute chaos, no stress—just pure joy,
                       love, and celebration.{" "}
-                      <span className="font-bold text-sm md:text-base text-black-900">
+                      <span className="font-extrabold text-sm md:text-base text-black">
                         After guiding over 200 Couples,
                       </span>{" "}
                       we know exactly how to help you - no matter where you are.
+                    </p>
+                    <p>
+                      {" "}
+                      {/* <span className="font-extrabold text-md md:text-lg text-black"> */}
+                      <span className="font-extrabold text-sm md:text-base text-black">
+                        Our packages start from £750 & are fully customisable
+                        depending on your needs.
+                      </span>{" "}
                     </p>
 
                     <div className="pt-6">
@@ -432,9 +440,12 @@ function App() {
                     Contact Us - 5 spots left.
                   </h2>
 
-                  <p className="text-center mb-6 font-mulish text-sm md:text-base text-gray-600">
-                    Fill out the form below, and we'll get in touch.
-                  </p>
+                  <h3 className="custom-font-h3 font-playfair text-2xl md:text-3xl text-center mb-6">
+                  We'll get in touch and clarify everything, so you know exactly what you're getting into—without making a commitment to
+                    anything.
+                  </h3>
+
+
                   <form
                     name="contact"
                     method="POST"
@@ -561,11 +572,7 @@ function App() {
                         isSubmitting ? "bg-gray-500" : "bg-gray-900"
                       } text-white px-6 py-3 rounded-full font-mulish font-semibold hover:bg-gray-800 transition duration-300 flex items-center justify-center space-x-2 text-sm md:text-base`}
                     >
-                      <span>
-                        {isSubmitting
-                          ? "Submitting..."
-                          : "Lock In My Free Consultation"}
-                      </span>
+                      <span>{isSubmitting ? "Submitting..." : "Submit"}</span>
                       <Send className="w-4 h-4" />
                     </motion.button>
                   </form>
@@ -658,10 +665,33 @@ function ServiceCard({
   title: string;
   description: string;
 }) {
+  const handleClick = () => {
+    const contactSection = document.getElementById("form");
+    if (!contactSection) return;
+
+    const start = window.pageYOffset;
+    const end = contactSection.offsetTop - 80; // Adding offset for header
+
+    animate(start, end, {
+      duration: 1.2,
+      ease: [0.32, 0.72, 0, 1],
+      onUpdate: (value) => {
+        window.scrollTo(0, value);
+      },
+      onComplete: () => {
+        const firstInput = contactSection.querySelector('input[type="text"]');
+        if (firstInput instanceof HTMLInputElement) {
+          firstInput.focus();
+        }
+      },
+    });
+  };
+
   return (
     <motion.div
       whileHover={{ scale: 1.02 }}
-      className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300"
+      className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300 cursor-pointer"
+      onClick={handleClick}
     >
       <div className="mb-4">{icon}</div>
       <h3 className="font-playfair text-lg md:text-xl mb-3">{title}</h3>
