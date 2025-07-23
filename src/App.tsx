@@ -219,7 +219,7 @@ function App() {
                       transition={{ duration: 0.8 }}
                       className="font-playfair font-black text-3xl md:text-5xl text-gray-900 md:text-white mb-4"
                     >
-                      Bringing it all together & taking your stress away
+                      Bringing it all together & Taking your stress away
                     </motion.h1>
                     <motion.p
                       initial={{ y: 20, opacity: 0 }}
@@ -441,10 +441,10 @@ function App() {
                   </h2>
 
                   <h3 className="custom-font-h3 font-playfair text-2xl md:text-3xl text-center mb-6">
-                  We'll get in touch and clarify everything, so you know exactly what you're getting into—without making a commitment to
-                    anything.
+                    We'll get in touch and clarify everything, so you know
+                    exactly what you're getting into—without making a commitment
+                    to anything.
                   </h3>
-
 
                   <form
                     name="contact"
